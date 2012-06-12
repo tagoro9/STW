@@ -1,0 +1,16 @@
+<div class="snippet">
+  <div class="snippet">
+  <div class="sbody" id="content">
+      <div class="syntax syntax_ruby">
+        <pre>
+           <code>
+              <span class="line_number">1</span>  
+              <span class="ident">a</span> 
+              <span class="punct">=</span> 
+              <span class="number">5</span>
+            </code>
+         </pre>
+      </div>
+  </div>
+  <br/><a href="/">New Paste!</a>
+</div>

@@ -3,7 +3,7 @@ require 'syntaxi'
 
 class String
   def formatted_body leng
-    source = "[code lang= '#{leng}']
+    source = "[code lang= #{leng}]
                 #{self}
               [/code]"
     html = Syntaxi.new(source).process
