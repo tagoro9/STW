@@ -23,9 +23,9 @@ get '/throw/:type' do
   halt 403, "You must throw one of the following: #{@throws}" unless @throws.include? player_throw
   computer_throw = @throws.sample
   if player_throw == computer_throw
-    @answer = "you tied with the computer.Try again"
+    @answer = "You tied with the computer.Try again"
   elsif computer_throw == @defeat[player_throw]
-    @answer = "you win"
+    @answer = "You win"
   else
     @answer = "Computer win"
   end
