@@ -41,3 +41,8 @@ get '/throw/:type' do
                    :computer_throw => computer_throw
   }
 end
+
+post '/reset' do
+  session.clear
+  redirect "/"
+end

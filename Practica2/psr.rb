@@ -10,7 +10,7 @@ before do
   @defeat = {:rock => :paper, :paper => :scissors, :scissors => :rock}
   @throws = @defeat.keys
   session[:You]= "0" if session[:You].nil?
-  session[:Computer]="0" if session[:You].nil?
+  session[:Computer]="0" if session[:Computer].nil?
 end
 
 get '/' do
@@ -40,4 +40,9 @@ get '/throw/:type' do
                    :player_throw => player_throw,
                    :computer_throw => computer_throw
   }
+end
+
+post '/reset' do
+  session.clear
+  redirect "/"
 end

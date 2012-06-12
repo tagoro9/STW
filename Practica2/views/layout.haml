@@ -6,5 +6,8 @@
     #Partidas
       %h2 Partidas ganadas del jugador:  #{session[:You]}
       %h2 Partidas ganadas por el ordenador:  #{session[:Computer]}
+      %form(action="/reset" method="post")
+        %label(for="reset")
+        %input(type="submit" name="reset" value="Reset")
     = yield
 
