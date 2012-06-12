@@ -1,0 +1,7 @@
+
+<div id = Formulario>
+  <form action='/' method="post">
+    Selecciona una de los siguientes opciones[paper, rock, scissors]:
+    <input name="post[opcion]" />
+  </form>
+</div>

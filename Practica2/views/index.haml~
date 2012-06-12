@@ -1,0 +1,5 @@
+
+#Formulario
+%form(action="/" method="post")
+  %label(for="opcion") Selecciona una de los siguientes opciones[paper, rock, scissors]:
+  %input(type="text" name="opcion")

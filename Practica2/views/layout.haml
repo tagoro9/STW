@@ -1,0 +1,10 @@
+
+%html
+  %head
+    %link(rel="stylesheet" type="text/css" href="/style.css")  
+  %body
+    #Partidas
+      %h2 Partidas ganadas del jugador:  #{session[:You]}
+      %h2 Partidas ganadas por el ordenador:  #{session[:Computer]}
+    = yield
+
