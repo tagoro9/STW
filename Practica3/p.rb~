@@ -15,11 +15,15 @@ class String
   	end	
 end
 
+before do
+	content_type :html
+end
+
 get '/' do
-  erb :new
+	erb :new
 end
 
 post '/' do
-  @Salida = params[:body].formatted_body params[:Lenguaje]
-  erb :mostrar
+	@snippet = params[:body].formatted_body params[:lenguage]
+	erb :mostrar
 end
