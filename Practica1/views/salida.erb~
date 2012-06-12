@@ -1,2 +1,7 @@
 
+
+<div id = "Respuesta">
+    <h2>Elegiste: <%=@player_throw%></h2>
+    <h2>La máquina eligio: <%=@computer_throw%></h2>
     <h1><%=@answer%></h1>
+</div>
