@@ -25,15 +25,12 @@ get '/throw/:type' do
   @computer_throw = @throws.sample
 
   if @player_throw == @computer_throw 
-    @class = "warning"
     @answer = "There is a tie"
     erb :result
   elsif @player_throw == @defeat[@computer_throw]
-    @class = "error"
     @answer = "Computer wins; #{@computer_throw} defeats #{@player_throw}"
     erb :result
   else
-    @class = "success"
     @answer = "Well done. #{@player_throw} beats #{@computer_throw}"
     erb :result
   end

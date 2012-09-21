@@ -4,5 +4,6 @@
       <label class="radio" for="paper"><input type="radio" id="paper" name="player_move" value="paper"/> Paper</label>
       <span class="divider">|</span>
       <label class="radio" for="scissors"><input type="radio" id="scissors" name="player_move" value="scissors"/> Scissors</label>
+      <span class="divider">|</span>
       <input class="btn btn-primary pull-right" type="submit" name="play" value="Play"/>
    </form>

@@ -10,9 +10,7 @@
                 <h1>Let's play! <small>Rock, paper & scissors</small></h1>
                    <p><%=@title%></p>
 	      </div>
-              <div class="span6 offset3 well">
-                 <%=yield%>
-              </div>
+              <%=yield%>
          </div>
       </div>
    </body>
