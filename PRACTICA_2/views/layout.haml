@@ -1,0 +1,32 @@
+%html
+  %head
+    %title Rock, paper & scissors
+    %link(rel="stylesheet" type="text/css" href="/css/bootstrap/css/bootstrap.min.css")
+  %body
+    %div.container
+      %div.row
+        %div.page-header
+          %h1 
+            Let's play!
+            %small Rock, paper & scissors
+          %p= @title
+        =yield
+        %div.span6.offset3.well.well-small
+          %form.form-inline(action="/" method="POST") 
+            %label.radio(for="rock")
+              %input#rock(type="radio" value="rock" name="player_move")
+              Rock
+            %span.divider |
+            %label.radio(for="paper")
+              %input#paper(type="radio" value="paper" name="player_move")
+              Paper
+            %span.divider |
+            %label.radio(for="scissors")
+              %input#scissors(type="radio" value="scissors" name="player_move")
+              Scissors
+            %input.btn.btn-primary.pull-right(type="submit" name="play" value="Play")
+          You: 
+          =session[:won] || 0
+          Computer: 
+          =session[:lost] || 0
+          %a.btn.btn-primary.pull-right(href="/reset") Reset

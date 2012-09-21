@@ -1,0 +1,10 @@
+%div.span12
+  %div{:class => "alert alert-#{@class}"}
+    %p=@answer
+%div.span6.offset3.well.well-small
+  %span
+    You played
+    =@player_throw
+  %span.pull-right
+    Computer played
+    =@computer_throw
