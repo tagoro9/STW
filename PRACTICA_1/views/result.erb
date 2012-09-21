@@ -1,8 +1,15 @@
-<div class="alert alert-<%=@class%>"
-   <p>
-      <%=@answer%>
-   </p>
+<div class="span12">
+   <div class="alert alert-<%=@class%>"
+      <p>
+         <%=@answer%>
+      </p>
+   </div>
 </div>
-<p>
-   <a href="/" class="btn btn-primary pull-right">Play again!</a>
-</p>
+<div class="span6 offset3 well well-small">
+   <span>
+      You played <%=@player_throw%>
+   </span>
+   <span class="pull-right">
+      Computer played <%=@computer_throw%>
+   </span>
+</div>

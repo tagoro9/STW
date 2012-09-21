@@ -16,9 +16,9 @@ post '/' do
    redirect "/throw/#{params[:player_move]}"
 end
 
-get '/throw/:type' do
+get '/throw/?:type?' do
   # the params hash stores querystring and form data
-  @player_throw = params[:type].to_sym
+  @player_throw = (params[:type] || "").downcase.to_sym
 
   halt(403, "You must throw one of the following: '#{@throws.join(', ')}'") unless @throws.include? @player_throw
 
@@ -30,11 +30,11 @@ get '/throw/:type' do
     erb :result
   elsif @player_throw == @defeat[@computer_throw]
     @class = "error"
-    @answer = "Computer wins; #{@computer_throw} defeats #{@player_throw}"
+    @answer = "Computer wins"
     erb :result
   else
     @class = "success"
-    @answer = "Well done. #{@player_throw} beats #{@computer_throw}"
+    @answer = "Well done. You win!"
     erb :result
   end
 end

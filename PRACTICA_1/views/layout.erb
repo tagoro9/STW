@@ -10,8 +10,16 @@
                 <h1>Let's play! <small>Rock, paper & scissors</small></h1>
                    <p><%=@title%></p>
 	      </div>
-              <div class="span6 offset3 well">
-                 <%=yield%>
+              <%=yield%>
+              <div class="span6 offset3 well well-small">
+		   <form class="form-inline" action="/" method="POST">
+		      <label class="radio" for="rock"><input type="radio" id="rock" name="player_move" value="rock"/> Rock</label>
+		      <span class="divider">|</span>
+		      <label class="radio" for="paper"><input type="radio" id="paper" name="player_move" value="paper"/> Paper</label>
+		      <span class="divider">|</span>
+		      <label class="radio" for="scissors"><input type="radio" id="scissors" name="player_move" value="scissors"/> Scissors</label>
+		      <input class="btn btn-primary pull-right" type="submit" name="play" value="Play"/>
+		   </form>
               </div>
          </div>
       </div>
