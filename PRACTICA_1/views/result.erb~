@@ -1,0 +1,2 @@
+<h3> You choose <%= player_throw %> </h3>
+<h2> <%= @answer %></h2>

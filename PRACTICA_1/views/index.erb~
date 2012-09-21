@@ -1,22 +1,18 @@
-<html>
- <body>
   <h1>Rock-Paper-Scissors</h1>
   <h2>What's your choice?</h2>
   <form action="/" method="post">
    <label for="r1"> Rock </label>
-   <input type="radio" name="radio" value="Rock" checked="checked"/>
+   <input type="radio" name="radio" value="rock" checked="checked"/>
    </br>
 
    <label for="r2"> Paper </label>
-   <input type="radio" name="radio" value="Paper"/>
+   <input type="radio" name="radio" value="paper"/>
    </br>
 
    <label for="r3"> Scissors </label>
-   <input type="radio" name="radio" value="Scissors"/>
+   <input type="radio" name="radio" value="scissors"/>
    </br>
 
    <input type="submit" name="submit" value="Send"/>
 
   </form>
- </body>
-</html>

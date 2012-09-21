@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'erb'
 
 before do
   content_type :html
@@ -11,20 +12,20 @@ get '/' do
 end
 
 post '/' do
-  player_throw = params[:radio].to_sym
-puts player_throw.inspect
+  redirect "http://localhost:4567/throw/#{params[:radio]}"
+end
+
+get '/throw/:type' do
+  player_throw = params[:type].to_sym
   halt 403, "You must throw one of the following: #{@throws}" unless @throws.include? player_throw
   computer_throw = @throws.sample
 
-  if player_throw == computer_throw
-    @answer = "You tied with the computer. Try again."
+  @answer = if player_throw == computer_throw
+    "You tied with the computer. Try again."
   elsif computer_throw == @defeat[player_throw]
-    @answer = "You win."
+    "You win."
   else
-    @answer = "Computer wins."
+    "Computer wins."
   end
-end
-
-get '/' do
   erb :result
 end
