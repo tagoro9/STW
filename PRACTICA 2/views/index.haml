@@ -1,0 +1,9 @@
+%h1 Select your movement
+%form.custom{:action => "/", :method => "POST"}
+	%label{:for => "customDropdown"} Your choose:
+	%select#customDropdown{:name => "player_move"}
+		- ['rock', 'paper', 'scissors'].each do |i|
+			%option{:value => i}= i
+	%input.radius.button{:type => "submit", :name => "throw", :value => "Throw"}
+	:javascript
+		$(document).foundationCustomForms();
