@@ -9,3 +9,5 @@
     %br
     %h2 Jugador: #{session[:you]}
     %h2 Computer: #{session[:computer]}
+    %form{:action => "/reset", :method => "post"}
+      %input{:type => "submit", :name => "submit", :value => "reset"}

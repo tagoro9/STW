@@ -3,8 +3,6 @@ require 'haml'
 
 configure do
   enable :sessions
-  session[:you] = "0" if session[:you].nil?
-  session[:computer] = "0" if session[:computer].nil?
 end
 
 before do
@@ -38,4 +36,9 @@ get '/throw/:type' do
     "Computer wins."
   end
   haml :result, :locals => {:player_throw => player_throw, :computer_throw => computer_throw, :answer => answer}
+end
+
+get '/reset' do
+  session.clear
+  redirect '/'
 end

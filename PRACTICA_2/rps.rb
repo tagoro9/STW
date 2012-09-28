@@ -37,3 +37,8 @@ get '/throw/:type' do
   end
   haml :result, :locals => {:player_throw => player_throw, :computer_throw => computer_throw, :answer => answer}
 end
+
+post '/reset' do
+  session.clear
+  redirect '/'
+end
