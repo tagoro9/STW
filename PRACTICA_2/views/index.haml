@@ -1,0 +1,16 @@
+%h2 What's your choice?
+%form{:action => "/", :method => "post"}
+  %label{:for => "r1"} Rock
+  %input{:type => "radio", :name => "radio", :value => "rock", :checked => "checked"}
+  %br
+
+  %label{:for => "r2"} Paper
+  %input{:type => "radio", :name => "radio", :value => "paper"}
+  %br
+
+  %label{:for => "r3"} Scissors
+  %input{:type => "radio", :name => "radio", :value => "scissors"}
+  %br
+
+  %input{:type => "submit", :name => "submit", :value => "Send"}
+

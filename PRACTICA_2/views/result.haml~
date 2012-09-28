@@ -1,0 +1,3 @@
+%h3 Computer chooses: #{@computer_throw}
+%h3 You choose: #{@player_throw}
+%h2 #{@answer}

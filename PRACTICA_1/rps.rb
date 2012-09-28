@@ -22,7 +22,7 @@ get '/throw/:type' do
 
   @answer = if @player_throw == @computer_throw
     "You tied with the computer. Try again."
-  elsif @computer_throw == @defeat[@player_throw]
+  elsif @player_throw == @defeat[@computer_throw]
     "You win."
   else
     "Computer wins."
