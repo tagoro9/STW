@@ -1,0 +1,15 @@
+option '-n', '--name [NAME]', 'name you want to greet'
+task "greet", "Say hi to the nice people", (options)->
+	throw new Error("[NAME] is required") unless options.name?
+	console.log "Hello, #{options.name}"
+
+task "clean", "Clean up build directories", ->
+	console.log "cleaning up..."
+
+task "build", "Build the project files", ->
+	console.log "building..."
+
+task "package", "Clean, build and package the project", ->
+	invoke "clean"
+	invoke "build"
+	console.log "packaging..."

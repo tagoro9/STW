@@ -1,0 +1,4 @@
+exec = require('child_process').exec
+
+task "test","Run app tests", (options) =>
+  exec "jasmine-headless-webkit --runner-out tests.html"

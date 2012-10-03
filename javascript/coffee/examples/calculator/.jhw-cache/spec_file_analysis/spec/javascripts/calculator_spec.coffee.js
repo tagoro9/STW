@@ -1,0 +1,1 @@
+{"Calculator":[1],"is not in scientific mode by default":[6],"scientific mode":[9],"is in scientific mode when set":[14],"#add":[17],"adds two numbers":[18],"#substract":[21],"substracts two numbers":[22],"#multiply":[25],"multiplies two numbers":[26],"#divide":[29],"divides two numbers":[30]}
