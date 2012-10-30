@@ -12,7 +12,7 @@
       .snippet {
         margin: 5px;
       }
-      .snippet textarea, .snippet .sbody {
+      .snippet textarea .snippet .sbody {
         border: 5px dotted #eee;
         padding: 5px;
         width: 700px;
