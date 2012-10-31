@@ -1,0 +1,12 @@
+<h1>Pongamos tu codigo bonito</h1>
+<form class="custom" action="/" method="POST">
+	<label for="customDropdown">Your choose</label>
+	<select  id="customDropdown" name="language">
+		<option value="ruby" SELECTED>Ruby</option>
+		<option value="xml">XML</option>
+		<option value="yaml">YAML</option>	
+	</select>
+	<textarea name="codigo"></textarea>
+	<input class="radius button" type="submit" name="throw" value="Throw"/>
+</form>
+<script>$(document).foundationCustomForms();</script>
