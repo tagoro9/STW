@@ -1,0 +1,24 @@
+!!! 5
+%html
+  %head
+    %title URL Shortener
+    %link(rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css")
+    %link(rel="stylesheet" type="text/css" href="/css/styles.css")
+  %body
+    %div.row
+      %div.span10.offset1
+        %h1
+          %a(href="/")
+            URL
+            %small shortener
+      %div.span5.offset1
+        %p
+          Simple URL shortener developed using sinatra, ActiveRecord and a SQLite3 database.
+      %div#controls.span4.offset1   
+        %div.row          
+          %form(action="/" method="POST")
+            %input.search-query(type="text" name="url" id="url" accesskey="s" placeholder="url to shorten...")
+            %input.btn.btn-inverse(type="submit" value="Shorten")          
+            %div{:class => "control-group #{type}"}
+              %div.controls
+                =yield
