@@ -1,0 +1,2 @@
+-lista.each do |address|
+  %p.alert.alert-info #{address.url} -----> http://#{settings}/#{address.id}
