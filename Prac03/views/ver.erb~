@@ -1,0 +1,12 @@
+<div class="snippet">
+	<div class="sbody" id="content">
+		<div class="ruby">
+			<pre>
+				<code>
+					<%=@Codigo%>
+				</code>
+			</pre>
+		</div>
+	</div>
+<br/><a href="/">New Paste!</a>
+</div>

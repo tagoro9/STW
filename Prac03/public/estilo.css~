@@ -1,0 +1,17 @@
+#areaTexto { 
+	margin-left: 20px;
+	width: 400px;
+	height: 200px;
+	-webkit-box-shadow: 2px 2px 5px #999;
+	 -moz-box-shadow: 2px 2px 5px #999;
+ 	filter: progid:DXImageTransform.Microsoft.Shadow(color='#666666', Direction=135, Strength=4);
+}
+
+#submit {
+	float: left;
+	margin-top: -180px;
+}
+
+#opc {
+	float:left;
+}
