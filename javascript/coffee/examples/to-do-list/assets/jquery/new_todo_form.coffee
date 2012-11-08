@@ -16,6 +16,5 @@ $ ->
           alert message
         request.done (todo) =>
           TodoApp.appendTodo(todo)
-          alert JSON.stringify(todo)
           $(e.target).val("")
 
