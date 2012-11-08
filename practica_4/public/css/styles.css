@@ -1,7 +1,14 @@
-span.help-inline {
-	margin-left: 13px;
+h2 {
+	font-size: 25px;
 }
 
-span.help-inline a {
-	color: #468847;
+div.alert {
+	text-align: center;
+	margin: auto;
+	width: 50%;
+}
+
+div.alert ul {
+	margin-top: 20px;
+	text-align: left;
 }

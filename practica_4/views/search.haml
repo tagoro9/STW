@@ -1,0 +1,5 @@
+- if @search_url.present?
+  %h2
+    Found
+    %small URL
+  %a(href="#{@search_url.short_url}") #{@search_url.url}

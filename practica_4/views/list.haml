@@ -1,0 +1,7 @@
+- if @shortened_urls.present?
+  %h2
+    Shortened
+    %small URLs
+  - @shortened_urls.each do |url|
+    %a(href="#{url.short_url}") #{url.url}
+    &nbsp; - &nbsp;

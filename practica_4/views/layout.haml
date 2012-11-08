@@ -14,11 +14,20 @@
       %div.span5.offset1
         %p
           Simple URL shortener developed using sinatra, ActiveRecord and a SQLite3 database.
+        %p
+          %a(href="/list") View shortened URLs
       %div#controls.span4.offset1   
         %div.row          
           %form(action="/" method="POST")
-            %input.search-query(type="text" name="url" id="url" accesskey="s" placeholder="url to shorten...")
-            %input.btn.btn-inverse(type="submit" value="Shorten")          
-            %div{:class => "control-group #{type}"}
-              %div.controls
-                =yield
+            %div.control-group
+              %input.search-query(type="text" name="url" id="url" accesskey="s" placeholder="url to shorten...")
+              %input.btn.btn-inverse(type="submit" value="Shorten")   
+            %div.control-group            
+              %label.checkbox
+                %input(type="checkbox" name="custom" id="custom") Custom name
+              %input.span2(type="text" name="custom_name" id="custom_name" placeholder="custom name...")                 
+          %form(action="/search" method="POST")
+            %input.search-query(type="text" name="search" id="search" placeholder="search urls")
+            %input.btn.btn-inverse(type="submit" value="Search")  
+      %div.span10.offset1
+        =yield

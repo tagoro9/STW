@@ -1,2 +1,6 @@
 - if @short_url.present? && !@short_url.valid?
-  %span.help-inline Invalid URL: #{@short_url.url}
+  %div.alert.alert-error
+    Something went wrong when trying to shorten #{@short_url.url}
+    %ul
+      - @short_url.errors.each do |attr,error|
+        %li #{attr} #{error}
