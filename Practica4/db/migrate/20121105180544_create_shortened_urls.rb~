@@ -4,7 +4,7 @@ class CreateShortenedUrls < ActiveRecord::Migration
       t.string :url
       t.string :PersonalUrl
     end
-    add_index :shortened_urls, :url, :PersonalUrl
+    add_index :shortened_urls, :url
   end
 
   def down

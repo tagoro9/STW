@@ -11,17 +11,23 @@
             %form(action="/" method="POST")
                 %label(for="url")
                 %input(type="text" name="url" id="url" accesskey="s")
+                %input(type="text" name="urlP" id="urlP" accesskey="s")
                 %input.btn.btn-primary.btn-small(type="submit" value="Acortar")
             %p Opción 2 - Listar todas las url
             %form(action="/listar" method="GET")
                 %input.btn.btn-primary.btn-small(type="submit" value="Listar todas las urls")
             %p Opción 3 - Introduzca el id de la url
-            %form(action="/BAbreviacion" method="GET")
+            %form(action="/BAbreviacion" method="POST")
                 %label(for="url")
                 %input(type="text" name="url" id="url" accesskey="s")
                 %input.btn.btn-primary.btn-small(type="submit" value="Busqueda por url corta")
             %p Opción 4 - Introduzca Url larga para buscar su url corta
-            %form(action="/BUrl" method="GET")
+            %form(action="/BUrl" method="POST")
                 %label(for="url")
                 %input(type="text" name="url" id="url" accesskey="s")
                 %input.btn.btn-primary.btn-small(type="submit" value="Busqueda por url larga")
+%             %p Opción 5 - Introduzca Url larga y url corta personalizada
+%             %form(action="/personal" method="POST")
+%                 %label(for="url")
+%                 %input(type="text" name="url" id="url" accesskey="s")
+%                 %input.btn.btn-primary.btn-small(type="submit" value="Acortación personalizada")

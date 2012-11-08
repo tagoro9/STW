@@ -8,7 +8,7 @@ set :address, 'localhost:4567'
 
 class ShortenedUrl < ActiveRecord::Base
   # Validates whether the value of the specified attributes are unique across the system.
-  validates_uniqueness_of :url
+  validates_uniqueness_of :url, :personalUrl
   # Validates that the specified attributes are not blank
   validates_presence_of :url
   #validates_format_of :url, :with => /.*/
@@ -24,11 +24,22 @@ get '/' do
 end
 
 post '/' do
-  @short_url = ShortenedUrl.find_or_create_by_url(params[:url])
-  if @short_url.valid?
-    haml :success, :locals => { :address => settings.address }
+  if params[:urlP].empty?
+    @short_url = ShortenedUrl.find_or_create_by_url(params[:url])
+    if @short_url.valid?
+      haml :success, :locals => { :address => settings.address }
+    else
+      haml :index
+    end
   else
-    haml :index
+    urlP = ShortenedUrl.find_or_create_by_url_and_personalUrl(params[:url],params[:urlP])
+    if urlP.valid?
+      haml :success1, :locals => { :address => urlP.url,
+                                    :address1 => urlP.personalUrl,
+                                    :settings => settings.address }
+    else
+      haml :index
+    end
   end
 end
 
@@ -51,13 +62,16 @@ end
 post '/BUrl' do
   urlorigen = ShortenedUrl.find_by_url(params[:url])
   if urlorigen.present?
-    haml :mostrar, :locals => { :address => "#{settings.address}/#{urlorigen.id}"}
+    haml :mostrar, :locals => { :address => "#{settings.address}/#{urlorigen.id.to_s(36)}"}
   else
     haml :index
   end
 end
 
 get '/:shortened' do
-  short_url = ShortenedUrl.find(params[:shortened].to_i(36))
+  short_url = ShortenedUrl.find_by_personalUrl(params[:shortened])
+  if short_url.nil?
+    short_url = ShortenedUrl.find(params[:shortened].to_i(36))
+  end
   redirect short_url.url
 end
