@@ -1,7 +1,0 @@
-<div class="snippet">
-  <div class="sbody" id="content">
-    <%= @output %>
-  </div>
-  <br/>
-  <a href="/">New Paste!</a>
-</div>

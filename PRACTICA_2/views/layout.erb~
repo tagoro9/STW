@@ -1,9 +1,0 @@
-<html>
-  <head>
-    <title>Rock, paper, scissors</title>
-    <link rel="stylesheet" type="text/css" href="/style.css"/>
-  </head>
-  <body>
-    <%= yield %>
-  </body>
-</html>
