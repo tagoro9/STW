@@ -84,7 +84,6 @@ get '/:shortened' do
   if short_url.nil?
     short_url = ShortenedUrl.find(params[:shortened].to_i(36))
   end
-
   xml = RestClient.get  "http://api.hostip.info/get_xml.php?ip=#{request.ip}"
   siglasPais = XmlSimple.xml_in(xml.to_s, { 'ForceArray' => false })['featureMember']['Hostip']['countryAbbrev']
   @UrlPais = Paises.find_or_create_by_url_and_pais(short_url.url, siglasPais)
