@@ -1,6 +1,0 @@
-
-
-#Respuesta
-  %h2 Elegiste:  =player_throw
-  %h2 La máquina eligió:  =computer_throw
-  %h1  #{answer}

@@ -60,7 +60,7 @@ get '/visitas' do
   haml :visitas, :locals => { :lista => lista,
                               :total => total}
 end
-
+ 
 post '/BAbreviacion' do
   abreviatura = ShortenedUrl.find_by_id(params[:url].to_i(36))
   if abreviatura.present?
@@ -84,7 +84,9 @@ get '/:shortened' do
   if short_url.nil?
     short_url = ShortenedUrl.find(params[:shortened].to_i(36))
   end
-  siglasPais = RestClient.get "http://api.hostip.info/country.php"
+
+  xml = RestClient.get  "http://api.hostip.info/get_xml.php?ip=#{request.ip}"
+  siglasPais = XmlSimple.xml_in(xml.to_s, { 'ForceArray' => false })['featureMember']['Hostip']['countryAbbrev']
   @UrlPais = Paises.find_or_create_by_url_and_pais(short_url.url, siglasPais)
   @UrlPais.visitas = @UrlPais.visitas + 1
   @UrlPais.save

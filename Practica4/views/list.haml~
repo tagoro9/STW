@@ -1,5 +1,0 @@
--lista.each do |address|
-  -if address.personalUrl.nil?
-    %p.alert.alert-info #{address.url} -----> http://#{settings}/#{address.id.to_s(36)}
-  -else
-    %p.alert.alert-info #{address.url} -----> http://#{settings}/#{address.personalUrl}

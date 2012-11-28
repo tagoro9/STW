@@ -7,7 +7,7 @@ class CreatePaises < ActiveRecord::Migration
     end
     add_index :paises, :url
   end
-
+ 
   def down
     drop_table :paises
   end

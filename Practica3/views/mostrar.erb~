@@ -1,6 +1,0 @@
-<div class="snippet">
-  <div class="sbody" id="content">
-      <%=@Salida%>
-  </div>
-  <br/><a href="/">New Paste!</a>
-</div>
