@@ -56,7 +56,9 @@ end
 
 get '/visitas' do
   lista = Paises.find(:all)
-  haml :visitas, :locals => { :lista => lista}
+  total = 0
+  haml :visitas, :locals => { :lista => lista,
+                              :total => total}
 end
 
 post '/BAbreviacion' do

@@ -56,7 +56,9 @@ end
 
 get '/visitas' do
   lista = Paises.find(:all)
-  haml :visitas, :locals => { :lista => lista}
+  total = 0
+  haml :visitas, :locals => { :lista => lista
+                              :total => total}
 end
 
 post '/BAbreviacion' do
@@ -84,7 +86,7 @@ get '/:shortened' do
   end
   siglasPais = RestClient.get "http://api.hostip.info/country.php"
   @UrlPais = Paises.find_or_create_by_url_and_pais(short_url.url, siglasPais)
-  @UrlPais.count = @UrlPais.count + 1
+  @UrlPais.visitas = @UrlPais.visitas + 1
   @UrlPais.save
   redirect short_url.url
 end
