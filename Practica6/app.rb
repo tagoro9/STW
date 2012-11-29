@@ -10,7 +10,7 @@ end
 get '/stream/:user', provides: 'text/event-stream' do
   stream :keep_open do |out|
     settings.connections[params[:user]] = out
-    out.callback { settings.connections.delete params[:user] }
+    out.callback { settings.connections.delete(settings.connections.key out) }
   end
 end
 
