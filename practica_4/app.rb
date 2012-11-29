@@ -1,13 +1,28 @@
 require 'sinatra'
 require 'sinatra/activerecord'
+require 'rest-client'
+require 'xmlsimple'
 require 'haml'
 
 set :database, 'sqlite3:///shortened_urls.db'
 set :address, 'http://localhost:9393'
+set :port, 9393
+
+class Visit < ActiveRecord::Base
+  belongs_to :shortenedUrl
+  def self.create_with_ip url,ip
+    xml = RestClient.get "http://api.hostip.info/get_xml.php?ip=#{ip}"  
+    country = XmlSimple.xml_in(xml.to_s, { 'ForceArray' => false })['featureMember']['Hostip']['countryAbbrev']  
+    puts "New visit! #{country}"
+    Visit.create :country => country, :at => Time.now, :shortenedUrl_id => url
+  end
+end
+
 
 class ShortenedUrl < ActiveRecord::Base
   # Validates whether the value of the specified attributes are unique across the system.
   validates_uniqueness_of :url
+  has_many :visits
   validates_uniqueness_of :custom, :allow_blank => true, :allow_nil => true, :message => "name has already been taken"
   # Validates that the specified attributes are not blank
   validates_presence_of :url
@@ -65,8 +80,14 @@ post '/search' do
 	haml :search
 end
 
+get '/stats' do  
+  @visits = Visit.select("country, shortenedUrl_id, count(*) as visits").group("country, shortenedUrl_id").order('visits desc')
+  haml :stats
+end
+
 get '/:shortened' do
 	long_url ||= ShortenedUrl.find_by_id params[:shortened].to_i(36)
   long_url ||= ShortenedUrl.find_by_custom params[:shortened]
-	redirect long_url.url, 301
+  Visit.create_with_ip long_url.id, request.ip
+  redirect long_url.url
 end

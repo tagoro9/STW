@@ -1,0 +1,12 @@
+%table#stats.table.table-hover.table-bordered
+  %tr
+    %th Country
+    %th Short Url
+    %th Long Url
+    %th Visits
+  - @visits.each do |object|
+    %tr
+      %td= object.country
+      %td= object.shortenedUrl.short_url
+      %td= object.shortenedUrl.url
+      %td= object.visits
