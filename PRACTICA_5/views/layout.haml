@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %title URL Shortener
+    %link(rel="stylesheet" type="text/css" href="bootstrap.css")
+  %body
+    %div(style="margin-left: 100px")
+      %h1 URL Shortener
+      %div
+        %form(action="/" method="POST")
+          %label(for="url") Shorten url: 
+          %input(type="text" name="url" id="url" accesskey="s")
+          %br
+          %label(for="custom") Custom Shortened URL(optional)
+          %input(type="text" name="custom" id="custom" accesskey="t")
+          %input(type="submit" value="Shorten" class="btn btn-primary")
+      %div
+        %form(action="/searchid" method="POST")
+          %label(for="id") Search by id: 
+          %input(type="text" name="id" id="id")
+          %input(type="submit" value="Search" class="btn")
+      %div
+        %form(action="/searchurl" method="POST")
+          %label(for="url") Search by URL: 
+          %input(type="text" name="url" id="url")
+          %input(type="submit" value="Search" class="btn")
+      %div
+        %form(action="/list" method="GET")
+          %input(type="submit" value="List all" class="btn")
+      =yield

@@ -1,0 +1,6 @@
+/%p #{params}
+%p 
+    %a(href="http://#{address}/#{url.id.to_s(36)}") #{url.id.to_s(36)}
+    &#45;>
+    %a(href="#{url.url}") #{url.url}  
+    %a(href="http://#{address}/#{url.custom}") #{url.custom}

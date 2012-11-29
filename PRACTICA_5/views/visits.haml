@@ -1,0 +1,13 @@
+%table
+  %th URL
+  %th Country
+  %th Visits
+  - urls.each do |u|
+    %tr
+      %td 
+        %a(href="#{u.url}") #{u.url}
+        /&#45;>
+      %td
+        #{u.country}
+      %td
+        #{u.count}
