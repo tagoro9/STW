@@ -1,0 +1,35 @@
+<div id="fondo">
+  <form>
+    <input id='msg' placeholder='type message here...' />
+  </form>
+
+  <pre id='chat' class="hero-unit span8"></pre>
+
+  <script>
+    // reading
+    var es = new EventSource("/stream/" + "<%= user %>");
+    es.onmessage = function(e) { 
+      data = eval(e.data)
+      $('#chat').append(data[0] + "\n")
+      list(data);
+    };
+    function list(users){
+      lista = "<ul>"
+      for (var i=1;i<users.length;i++){
+	lista = lista+"<li>"+users[i]+"</li>"
+      }
+      lista = lista + "</ul>"
+      $("#usuarios").html(lista);
+    }
+    // writing
+    $("form").live("submit", function(e) {
+      $.post('/', {user: "<%= user %>", msg: $('#msg').val() });
+      $('#msg').val(''); $('#msg').focus();
+      e.preventDefault();
+    });
+  </script>
+
+  <div id ="usuarios" class ="hero-unit span4">
+  </div>
+</div>
+
