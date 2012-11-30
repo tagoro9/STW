@@ -1,0 +1,3 @@
+- if @short_url.present? && !@short_url.valid?
+  %div.alert-box.alert
+    %p Invalid URL: #{@short_url.url}

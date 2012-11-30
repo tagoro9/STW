@@ -1,0 +1,10 @@
+%div.alert-box
+    %ul
+        - if @url_found.present?
+            %li #{@url_found.url} #{@url_found.id}
+        - elsif @abv_found.present?
+            %li #{@abv_found.url} #{@abv_found.id}
+        - else
+            %li No se han encontrado resultados
+    %a.close &times
+

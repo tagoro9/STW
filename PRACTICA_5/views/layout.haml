@@ -1,0 +1,22 @@
+!!!
+%html
+    %head
+        %link(rel="stylesheet" type="text/css" href="/foundation.min.css")
+        %script{:type => "text/javascript", :src =>"/foundation.min.js"}
+        %script{:type => "text/javascript", :src =>"/jquery.foundation.forms.js"}
+        %script{:type => "text/javascript", :src =>"/jquery.foundation.alerts.js"}
+    %body.row
+        %div.eight.columns.centered
+            %h1 URL shortener
+            =yield
+            %form(action="/" method="POST")
+                %label(for="url") URL
+                %input(type="text" name="url" id="url" accesskey="s")
+                %label(for="custom") Custom Shortened URL
+                %input(type="text" name="custom" id="custom" accesskey="t")
+                %input(type="submit" value="Shorten")
+            %form(action="/search" method="POST")
+                %input(type="text" name="search" id="search" placeholder="search urls")
+                %input(type="submit" value="Search")
+            %a.button{:href => "/show"}Show List
+            %a.button{:href => "/stats"}Show Stats

@@ -1,0 +1,5 @@
+%div.alert-box.secondary
+    %ul.disc 
+        - @urls.each do |url|
+            %li URL: #{url.url} ID: #{url.id} CUSTOM: #{url.custom}
+    %a.close &times

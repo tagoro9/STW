@@ -1,0 +1,5 @@
+%div.alert-box.secondary
+    %ul.disc 
+        - @countries_list.each do |l|
+            %li URL: #{l.url} Country: #{l.country} Visits: #{l.visits}
+    %a.close &times
