@@ -1,0 +1,11 @@
+<h1>Select your movement</h1>
+<form class="custom" action="/" method="POST">
+	<label for="customDropdown">Your choose</label>
+	<select  id="customDropdown" name="player_move">
+		<option value="rock" SELECTED>Rock</option>
+		<option value="paper">Paper</option>
+		<option value="scissors">Scissors</option>	
+	</select>
+	<input class="radius button" type="submit" name="throw" value="Throw"/>
+</form>
+<script>$(document).foundationCustomForms();</script>
