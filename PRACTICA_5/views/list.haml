@@ -1,12 +1,12 @@
 %table
-  %th ID
-  %th URL
-  %th Custom URL
+  %tr
+    %th ID
+    %th URL
+    %th Custom URL
   - urls.each do |u|
     %tr
       %td 
         %a(href="http://#{address}/#{u.id.to_s(36)}") #{u.id.to_s(36)} 
-        /&#45;>
       %td
         %a(href="#{u.url}") #{u.url}
       %td

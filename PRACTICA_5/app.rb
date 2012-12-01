@@ -73,10 +73,9 @@ post '/searchurl' do
 end
 
 get '/:shortened' do
-  #xml = RestClient.get "http://api.hostip.info/get_xml.php?ip=#{ip}"  
-  #country_abbr = XmlSimple.xml_in(xml.to_s, { 'ForceArray' => false })['featureMember']['Hostip']['countryAbbrev']
-  country_abbr = RestClient.get "http://api.hostip.info/country.php"
-  puts country_abbr
+  xml = RestClient.get "http://api.hostip.info/get_xml.php?ip=#{request.ip}"  
+  country_abbr = XmlSimple.xml_in(xml.to_s, { 'ForceArray' => false })['featureMember']['Hostip']['countryAbbrev']
+  #country_abbr = RestClient.get "http://api.hostip.info/country.php"
   short_url = ShortenedUrl.find_by_custom(params[:shortened])
   if short_url.present?
     @country = Countries.find_or_create_by_url_and_country(short_url.url, country_abbr)

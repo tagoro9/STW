@@ -1,0 +1,17 @@
+#layout {
+   float: left;
+   margin-left: 100px;
+   width: 300px;
+   display: inline-block;
+}
+
+#content {
+   margin: 50px 100px 100px;
+   padding: 10px;
+   display: inline-block;
+}
+
+th, td {
+   text-align: center;
+   padding: 5px 10px;
+}
