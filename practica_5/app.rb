@@ -1,7 +1,6 @@
 # coding: utf-8
 require 'sinatra'
-#set server: 'thin', connections: []
-set connections: []
+set server: 'thin', connections: []
 
 get '/' do
   halt erb(:login) unless params[:user]
