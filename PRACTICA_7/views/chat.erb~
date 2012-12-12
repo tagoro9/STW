@@ -1,0 +1,39 @@
+<h3>Feel free to talk </h3>
+<div class="panel">
+	<pre id='chat'></pre>
+
+	<script>
+	  // reading
+	  var url = "/stream/" + "<%= user %>"
+	  var es = new EventSource(url);
+	  es.onmessage = function(e) { 
+	     console.log(e);
+             data = eval(e.data)
+             $('#chat').append(data[0] + "\n")
+             users(data);
+  
+          };
+          function users (usuarios){
+             cadena = "<ul>"
+             for (var i=1;i<usuarios.length;i++)
+	     { 
+             cadena += "<li>" + usuarios[i] + "</li>"
+	     }  
+             cadena += <"/ul>          
+             $("#list").html(cadena);
+          }
+	  // writing
+	  $("form").live("submit", function(e) {
+	    $.post('/', {msg: $('#msg').val(), user: "<%= user %>" });
+	    $('#msg').val(''); $('#msg').focus();
+	    e.preventDefault();
+	  });
+	</script>
+</div>
+<div id="list">
+</div>
+<form>
+  <input id='msg' placeholder='type message here...' />
+</form>
+
+
