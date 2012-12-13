@@ -1,0 +1,5 @@
+rake db:create_migration NAME=add_custom_to_shortened_urls
+rake db:create_migration NAME=create_paises
+rake db:create_migration NAME=create_shortened_urls
+
+rake db:migrate
