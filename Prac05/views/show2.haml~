@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 - @urls.each do |url|
     %p URL: #{url.url} ID: #{url.id} 
 %a.close &times
+=======
+- @urls.each do |url|
+    %p URL: #{url.url} ID: #{url.id} 
+%a.close &times
+>>>>>>> ee1ade3789529e0f3f67a4582857a561826ed79e
