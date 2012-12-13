@@ -1,0 +1,3 @@
+- @urls.each do |url|
+    %p URL: #{url.url} ID: #{url.id} 
+%a.close &times

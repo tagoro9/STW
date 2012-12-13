@@ -1,0 +1,4 @@
+-lista.each do |l|
+  %p #{l.url} -----> Pais: #{l.pais} ------> Visitas:#{l.visitas}
+  -total = total + l.visitas
+%p.alert.alert-info Total visitas: #{total}
