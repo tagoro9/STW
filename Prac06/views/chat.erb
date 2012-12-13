@@ -1,0 +1,17 @@
+<span id="welcome"> Bienvenido <%= user %>!, Chatea cuanto quieras, ¡es gratis!</span><br>
+<pre id='chat'></pre>
+
+<form id="mensajes">
+  <input id='msg' placeholder='...' />
+</form>
+
+<script> 
+  var es = new EventSource("/stream/" + "<%= user %>");
+  es.onmessage = function(e) { $('#chat').append(e.data + "\n") };
+
+  $("form").live("submit", function(e) {
+    $.post('/', {usuario: "<%= user %>", msg: $('#msg').val() });
+    $('#msg').val(''); $('#msg').focus();
+    e.preventDefault();
+  });
+</script>
