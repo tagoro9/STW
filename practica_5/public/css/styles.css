@@ -1,0 +1,57 @@
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+#formContainer {
+	text-align: center;
+	margin: auto;
+}
+
+#alerts{
+	min-height: 73px;
+}
+
+.alert {
+	width: 400px;
+	margin: auto;
+}
+
+#chatContainer, #usersContainer {
+	min-height: 420px;
+	max-height: 420px;
+}
+
+#chat {
+	min-height: 350px;
+	max-height: 350px;	
+	overflow: scroll;
+	overflow-x: hidden
+}
+
+#chat div.msg {
+	color: #FFF;
+	display: block;
+	background: #4099FF;
+	padding: 10px 50px 10px 10px;
+	font-weight: bold;
+	border-radius: 10px;
+	margin: 10px;
+	max-width: 250px;
+	min-width: 250px;
+}
+
+#chat div em {
+	color: #ccc;
+}
+
+#msg{
+	width: 80%;
+	margin-right: 20px;
+}
+
+#users li a {
+	color: #FFF;
+	background: #08C;
+	border-radius: 5px;
+}

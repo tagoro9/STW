@@ -1,0 +1,40 @@
+<div class="hero-unit">
+	<h1>Sinatra super <small>simple</small> chat</h1>
+	<p>Please input your name to join the room</p>
+	<div id="formContainer">
+		<div id="alerts">
+		</div>		
+		<form id="login" class="form-inline" action='/'>
+			<div class="controls">
+				<input name='user' id="user" value='' placeholder="User name..." type="text" />
+	  			<input type='submit' class="btn btn-primary" id="submit" value="GO!" disabled="disabled" />
+	  		</div>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#user').focus()
+	})
+	$('#user').on('keyup', function(){
+		var name = $('#login input:text[name="user"]').val()
+		if (name == "")
+			$('#submit').attr('disabled','disabled')
+		else {
+			$.get(document.URL + 'check/'+ name, 
+				function(data) { 
+					console.log(data)
+					if ('error' in data) {
+						$('#alerts').html('<div class="alert alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button><strong>Error!</strong> Name already taken!</div>')
+						$('#submit').attr('disabled','disabled')
+					}
+					else
+						$('#alerts').html('')
+						$('#submit').removeAttr('disabled')
+				},
+				"json"
+			);
+		}
+	});
+</script>

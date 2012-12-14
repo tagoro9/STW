@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="well span7" id="chatContainer">
+    <div id="chat"></div>
+    <form class="form-inline">
+      <input type="text" id='msg' name="msg" placeholder='type message here...' />
+      <input type="submit" value="Send" class="btn btn-primary"/>
+     </form>    
+  </div>
+  <div class="well span4" id="usersContainer">
+    <ul id="users" class="nav nav-pills nav-stacked">
+    </ul>
+  </div>
+
+<script>
+
+  $(document).ready(function(){
+    $('#msg').focus();
+  })
+
+  // reading
+  var es = new EventSource('/stream/<%=user%>');
+  es.onmessage = function(e) { 
+    console.log(e.data)
+    data = $.parseJSON(e.data)
+    if ('users' in data) {
+      data['users'].forEach(function(user) {
+        $('#users').append('<li id="'+user+'"><a href="#">'+user+'</a></li>')
+      })
+    }
+    else if ('joined' in data) {
+        $('#users').append('<li id="'+data['joined']+'"><a href="#">'+data['joined']+'</a></li>')
+    }
+    else if ('left' in data){
+      $('#'+data['left']).remove()
+    }
+    else if (('message' in data) && ('user' in data)) {
+      if (data['user'] == '<%=user%>')
+        $('#chat').append('<div class="msg">'+data['message']+'</div>')
+      else {
+        privado = ""
+        if ('private' in data)
+          privado = " (privado)"
+        $('#chat').append('<div class="msg"><em>'+ data['user']+privado+":</em> "+data['message']+'</div>')
+      }
+    }
+   };
+
+  // writing
+  $("form").live("submit", function(e) {
+    $.post('/', {msg: $('#msg').val(), user: "<%= user %>"});
+    $('#msg').val(''); $('#msg').focus();
+    e.preventDefault();
+  });
+</script>
