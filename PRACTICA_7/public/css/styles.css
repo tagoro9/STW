@@ -1,0 +1,74 @@
+#chatContainer, #usersContainer {
+	min-height: 450px;
+	max-height: 450px;
+}
+
+#chat, #users {
+	overflow: auto;
+	overflow-x: hidden;
+	min-height: 420px;
+	max-height: 420px;
+}
+
+
+/* Chat panel */
+#chatContainer form {
+	margin-top: 10px;
+}
+
+#chat div.msg {
+	color: #FFF;
+	float: left;
+	clear: both;
+	background: #4099FF;
+	padding: 10px 20px 10px 10px;
+	font-weight: bold;
+	border-radius: 5px;
+	margin: 3px;
+	min-width: 25%;
+	max-width: 65%;
+	overflow: hidden;
+}
+
+#chat div.ownMsg {
+	float: right;
+	background: #40CC99;
+}
+
+#chat div.pMsg {
+	background: #40CCCC;
+}
+
+#chat div.inOutMsg {
+	background: #AAA;
+	font-weight: normal;
+	padding: 5px 10px 5px 5px;
+}
+
+#chat div.invalidMsg {
+	background: #CC4040;
+	padding: 5px 10px 5px 5px;
+}
+
+/* Send message form */
+#msg {
+	width: 90%;
+	margin-right: 18px;
+}
+
+#sendMsgBtn {
+	margin-left: -10px;
+}
+
+/* Sidebar */
+#users li a {
+	color: #FFF;
+	background-color: #08C;
+	margin-right: 10px;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#users li a:hover {
+	background-color: #19D;
+}

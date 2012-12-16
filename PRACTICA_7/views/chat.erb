@@ -1,0 +1,70 @@
+<div class='row-fluid'>
+  <div class='span10 offset1'>
+    <h4>Welcome to the chat, <%= user %>!</h4>
+
+    <div class='row-fluid'>
+      <div class='well span9' id='chatContainer'>
+        <div id='chat'></div>
+        <form class='form-inline'>
+          <input id='msg' placeholder='Type message here...' autocomplete='off' />
+          <input type='submit' value='Send' id='sendMsgBtn' class='btn btn-primary' />
+        </form>
+      </div>
+      <div class='well span3' id='usersContainer'>
+        <ul id='users' class='nav nav-pills nav-stacked'>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</br>
+<script>
+  $(document).ready(function(){
+    $('#msg').focus();
+  })
+
+  // reading
+  var es = new EventSource('/stream/<%= user %>');
+  es.onmessage = function(e) { 
+    console.log(e.data);
+    data = eval(e.data);
+    switch(data[3]) {
+      case "broadcast":
+        if (data[2] == '<%= user %>') {
+          $('#chat').append('<div class="msg ownMsg">' + data[0] + '</div>');
+        } else{
+          $('#chat').append('<div class="msg">' + data[0] + '</div>');
+        };
+        break;
+      case "private":
+        if (data[2] == '<%= user %>') {
+          $('#chat').append('<div class="msg ownMsg pMsg">' + data[0] + '</div>');
+        } else{
+          $('#chat').append('<div class="msg pMsg">' + data[0] + '</div>');  
+        };
+        break;
+      case "inOut":
+        if (data[2] != '<%= user %>')
+          $('#chat').append('<div class="msg inOutMsg">' + data[0] + '</div>');
+        break;
+      case "invalid":
+        $('#chat').append('<div class="msg ownMsg invalidMsg">' + data[0] + '</div>');
+    }
+
+    $("#chat").prop({ scrollTop: $("#chat").prop("scrollHeight") }); //autoscroll
+    userlist(data[1]);
+  };
+
+  function userlist (users) {
+    $('#users').empty();
+    for (var i=0; i < users.length; i++)
+      $('#users').append('<li><a href="#">'+ users[i] +'</a></li>');
+  }
+
+  // writing
+  $("form").live("submit", function(e) {
+    $.post('/', {user: "<%= user %>", msg: $('#msg').val()});
+    $('#msg').val(''); $('#msg').focus();
+    e.preventDefault();
+  });
+</script>
