@@ -1,0 +1,47 @@
+<script> 
+  var es = new EventSource("/stream/" + "<%= user %>");
+  es.onmessage = function(e) {
+	console.log(e);
+	data = eval(e.data)
+	//document.writeln(data); 
+	//$('#chat').append(e.data + "\n")
+	$('#chat').append(data[0] + "\n")	
+	users(data);
+  };
+
+	function users(usuarios){
+		cadena = "<ul>"
+		for (var i=1;i<usuarios.length;i++){ 
+			cadena += "<li>" + usuarios[i] + "</li>"
+		}  
+		cadena += "</ul>"
+		$("#list").html(cadena);
+	};
+  
+	function corta(){
+		var parrafo = document.getElementById("mensaje");
+		var texto = parrafo.innerHTML;
+
+		if ((texto.indexOf("<") == -1) && (texto.indexOf(">") == -1)){
+			texto = texto.split("").join("\u00ad");
+			parrafo.innerHTML = texto;
+		}
+	}
+  	  $("form").live("submit", function(e) {
+	    $.post('/', {msg: $('#msg').val(), user: "<%= user %>" });
+	    $('#msg').val(''); $('#msg').focus();
+	    e.preventDefault();
+	  });
+  onload = corta;
+</script>
+
+<span id="welcome"> Bienvenido <%= user %>!, Chatea cuanto quieras, ¡es gratis!</span><br>
+<div id="sala">
+	<div id='chat'></div>
+	<form id="entrada">
+	  <input id='msg' placeholder='...' />
+	</form>
+</div>
+
+<div id="list">
+</div>
