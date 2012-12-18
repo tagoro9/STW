@@ -17,7 +17,7 @@
     </div>
   </div>
 </div>
-</br>
+
 <script>
   $(document).ready(function(){
     $('#msg').focus();
@@ -46,19 +46,19 @@
       case "inOut":
         if (data[2] != '<%= user %>')
           $('#chat').append('<div class="msg inOutMsg">' + data[0] + '</div>');
+          userlist(data[1]); //update the user list
         break;
       case "invalid":
         $('#chat').append('<div class="msg ownMsg invalidMsg">' + data[0] + '</div>');
     }
 
     $("#chat").prop({ scrollTop: $("#chat").prop("scrollHeight") }); //autoscroll
-    userlist(data[1]);
   };
 
   function userlist (users) {
     $('#users').empty();
     for (var i=0; i < users.length; i++)
-      $('#users').append('<li><a href="#">'+ users[i] +'</a></li>');
+      $('#users').append('<li class="userLi"><a href="#">'+ users[i] +'</a></li>');
   }
 
   // writing
@@ -66,5 +66,13 @@
     $.post('/', {user: "<%= user %>", msg: $('#msg').val()});
     $('#msg').val(''); $('#msg').focus();
     e.preventDefault();
+  });
+
+  $(document).ready(function() {
+    $("#users").on('click', 'a', function(event) {
+      $("#msg").val('/' + $(this).text() + ':');
+      $("#msg").focus();
+      event.preventDefault();
+    });
   });
 </script>

@@ -29,10 +29,10 @@ get '/stream/:user', provides: 'text/event-stream' do
       settings.users.values.each { |out| out << "data: #{data}\n\n"}
     end
 
-    # out.errback do
-    #   logger.warn 'we just lost the connection!'
-    #   settings.users.delete(out)
-    # end
+    out.errback do
+      logger.warn 'we just lost the connection!'
+      settings.users.delete(out)
+    end
   end
 end
 
