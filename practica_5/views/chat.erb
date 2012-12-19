@@ -35,7 +35,7 @@
     }
     else if (('message' in data) && ('user' in data)) {
       if (data['user'] == '<%=user%>')
-        $('#chat').append('<div class="msg">'+data['message']+'</div>')
+        $('#chat').append('<div class="msg own">'+data['message']+'</div>')
       else {
         privado = ""
         if ('private' in data)

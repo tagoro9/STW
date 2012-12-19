@@ -33,12 +33,20 @@ body {
 	color: #FFF;
 	display: block;
 	background: #4099FF;
-	padding: 10px 50px 10px 10px;
+	padding: 10px;
 	font-weight: bold;
 	border-radius: 10px;
 	margin: 10px;
-	max-width: 250px;
-	min-width: 250px;
+	max-width: 300px;
+	min-width: 100px;
+	float: left;
+	clear: both;
+}
+
+#chat div.msg.own {
+	float: right;
+	padding-right: 20px;
+	text-align: right;
 }
 
 #chat div em {
